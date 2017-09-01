@@ -62,3 +62,10 @@ Obviously since you're taking this challenge, you want to wow us. But how? Here'
 
 ## HELP
 If you encounter any errors that you believe is a result of lack of information/misinformation on our part, send an e-mail to joseph@go-eka.com. We will get back to you as soon as possible.
+
+
+Setup
+````
+npm install
+````
+
