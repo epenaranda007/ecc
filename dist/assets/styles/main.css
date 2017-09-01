@@ -48,13 +48,24 @@ table {
 
 
 /* * CUSTOMS * */
-
-/* * Background * */
 body {
   background: #293f50;
   color: #888;
   font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+/* * Home * */
+.home-container-div {
+  
+}
+/* * Home * */
+
+/* * Form 1 * */
+.form1-container-div {
+  
+}
+/* * Form 1 * */
+
 
 
 
