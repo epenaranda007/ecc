@@ -49,7 +49,7 @@ table {
 
 /* * CUSTOMS * */
 body {
-  background: #293f50;
+  /*background: #293f50;*/
   color: #888;
   font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -62,12 +62,27 @@ body {
 
 /* * Form 1 * */
 .form1-container-div {
-  
+
 }
 /* * Form 1 * */
 
+/* * Form 2 * */
+.form2-container-div {
+  
+}
+/* * Form 2 * */
 
+/* * Form 3 * */
+.form3-container-div {
+  
+}
+/* * Form 3 * */
 
+/* * Finish * */
+.finish-container-div {
+
+}
+/* * Finish * */
 
 
 

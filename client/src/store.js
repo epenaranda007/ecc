@@ -13,5 +13,5 @@ export default createStore(
     form3
   }),
   {},
-  applyMiddleware(promise())
+  applyMiddleware(createLogger(), promise())
 );
