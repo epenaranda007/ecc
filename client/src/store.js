@@ -13,5 +13,10 @@ export default createStore(
     form3
   }),
   {},
-  applyMiddleware(createLogger(), promise())
+  applyMiddleware(promise())
 );
+
+
+
+// Redux Logger
+// applyMiddleware(createLogger(), promise())
