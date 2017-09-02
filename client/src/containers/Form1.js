@@ -4,6 +4,7 @@ import { setForm1 } from '../actions/form1Actions';
 import { Link } from 'react-router-dom';
 import { RaisedButton, TextField } from 'material-ui';
 import * as EmailValidator from 'email-validator';
+import passwordValidator from 'password-validator';
 
 class Form1 extends Component {
   
@@ -31,8 +32,16 @@ class Form1 extends Component {
   }
 
   validateInformation() {
+    let schema = new passwordValidator();
+    schema
+    .is().min(6)                                 
+    .is().max(16)                                
+    .has().uppercase()                           
+    .has().lowercase()                           
+    .has().digits();
+
     const { username, password, email } = this.form1;
-    if(username === '' || password === '' || email === '' || !EmailValidator.validate(email)) {
+    if(username === '' || password === '' || email === '' || !EmailValidator.validate(email) || !schema.validate(password)) {
       return false;
     }
     return true;
@@ -66,7 +75,7 @@ class Form1 extends Component {
           />
           <br />
           <TextField
-            hintText="Enter Password"
+            hintText="Enter Password (6-16 chars, must have upper & lower cases and digits)"
             floatingLabelText="Password"
             floatingLabelFixed={true}          
             type="password"
