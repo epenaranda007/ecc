@@ -88,7 +88,8 @@ class Form1 extends Component {
           <RaisedButton label="SAVE" primary={true} 
             disabled={this.buttonDisabled}
             onClick={this.saveInformation} 
-            style={style.savebutton} />          
+            style={style.savebutton} 
+          />          
           <br />
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { setForm2 } from '../actions/form2Actions';
 import { Link } from 'react-router-dom';
@@ -13,19 +13,41 @@ class Form2 extends Component {
       telephonenumber: this.props.form2.telephonenumber
     };
 
+    this.buttonDisabled = !this.validateInformation();
+
     this.saveInformation = this.saveInformation.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.validateInformation = this.validateInformation.bind(this);
   }
 
   handleInput(event, value) {
     this.form2[event.target.name] = value;
+    if(this.validateInformation()) {
+      this.buttonDisabled = false;      
+    } else {
+      this.buttonDisabled = true;
+    }
+    this.setState({});
+  }
+
+  validateInformation() {
+    const { firstname, lastname, telephonenumber } = this.form2;
+    if(firstname === '' || lastname === '' || telephonenumber === '') {
+      return false;
+    }
+    return true;
   }
 
   saveInformation() {
-    this.props.setForm2({
-      username: this.props.form1.username, 
-      ...this.form2
-    });
+    if(this.validateInformation()) {
+      this.props.setForm2({
+        username: this.props.form1.username, 
+        ...this.form2
+      })
+      .then(() => {
+        this.props.history.push('/form3');
+      });
+    }   
   }
 
   render() {
@@ -39,7 +61,6 @@ class Form2 extends Component {
             hintText="Enter Firstname"
             floatingLabelText="Firstname"
             floatingLabelFixed={true}
-            errorText=""
             name="firstname"
             defaultValue={this.form2.firstname}
             onChange={this.handleInput}
@@ -69,9 +90,11 @@ class Form2 extends Component {
           <Link to="/form1" style={style.backbutton} >
             <RaisedButton label="Back" secondary={true} />
           </Link>
-          <Link to="/form3" style={style.savebutton} >
-            <RaisedButton label="SAVE" primary={true} onClick={this.saveInformation}  />
-          </Link>
+          <RaisedButton label="SAVE" primary={true} 
+            disabled={this.buttonDisabled}
+            onClick={this.saveInformation} 
+            style={style.savebutton} 
+          />
           <br />
         </div>
       </div>
@@ -89,9 +112,13 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setForm2: form2 => {
-      dispatch(setForm2(form2));
+      return dispatch(setForm2(form2));
     }
   };
+};
+
+Form2.contextTypes = {
+  route: PropTypes.object
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form2);
@@ -102,10 +129,10 @@ const style = {
   },
   backbutton: {
     float: 'left',
-    paddingTop: '10px'
+    marginTop: '10px'
   },
   savebutton: {
     float: 'right',
-    paddingTop: '10px'
+    marginTop: '10px'
   }
 };
