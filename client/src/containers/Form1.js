@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { setForm1 } from '../actions/form1Actions';
 import { Link } from 'react-router-dom';
@@ -12,17 +12,38 @@ class Form1 extends Component {
       password: this.props.form1.password,
       email: this.props.form1.email
     };
+    this.buttonDisabled = !this.validateInformation();
 
     this.saveInformation = this.saveInformation.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.validateInformation = this.validateInformation.bind(this);
   }
 
   handleInput(event, value) {
     this.form1[event.target.name] = value;
+    if(this.validateInformation()) {
+      this.buttonDisabled = false;      
+    } else {
+      this.buttonDisabled = true;
+    }
+    this.setState({});
   }
 
-  saveInformation() { console.log('Enter key')
-    this.props.setForm1(this.form1);
+  validateInformation() {
+    const { username, password, email } = this.form1;
+    if(username === '' || password === '' || email === '') {
+      return false;
+    }
+    return true;
+  }
+
+  saveInformation() {
+    if(this.validateInformation()) {
+      this.props.setForm1(this.form1)
+      .then(() => {
+        this.props.history.push('/form2');
+      });
+    }    
   }
 
   render() {
@@ -37,7 +58,6 @@ class Form1 extends Component {
             hintText="Enter Username"
             floatingLabelText="Username"
             floatingLabelFixed={true}
-            errorText=""
             name="username"
             defaultValue={this.form1.username}
             onChange={this.handleInput}
@@ -47,8 +67,7 @@ class Form1 extends Component {
           <TextField
             hintText="Enter Password"
             floatingLabelText="Password"
-            floatingLabelFixed={true}
-            errorText=""
+            floatingLabelFixed={true}          
             type="password"
             name="password"
             defaultValue={this.form1.password}
@@ -60,16 +79,16 @@ class Form1 extends Component {
             hintText="Enter Email"
             floatingLabelText="Email"
             floatingLabelFixed={true}
-            errorText=""
             name="email"
             defaultValue={this.form1.email}
             onChange={this.handleInput}
             style={style.field}
           />      
           <br />
-          <Link to="/form2" style={style.savebutton}>
-            <RaisedButton label="SAVE" primary={true} onClick={this.saveInformation} />
-          </Link>
+          <RaisedButton label="SAVE" primary={true} 
+            disabled={this.buttonDisabled}
+            onClick={this.saveInformation} 
+            style={style.savebutton} />          
           <br />
         </div>
       </div>
@@ -86,9 +105,13 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setForm1: form1 => {
-      dispatch(setForm1(form1));
+      return dispatch(setForm1(form1));
     }
   };
+};
+
+Form1.contextTypes = {
+  route: PropTypes.object
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form1);
@@ -99,7 +122,7 @@ const style = {
   },
   savebutton: {
     float: 'right',
-    paddingTop: '10px',
+    marginTop: '10px',
 
   }
 };

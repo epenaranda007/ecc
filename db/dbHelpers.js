@@ -3,20 +3,42 @@ const { User } = require('../db');
 module.exports = {
   setForm1Information: (form1) => {
     const { username, password, email } = form1;
-    let user = new User();
-    user.set('username', username);
-    user.set('password', password);
-    user.set('email', email);
     return new Promise((resolve, reject) => {
-      user.save()
-      .then(result => {
-        resolve(result);
+      User.forge({username: username})
+      .fetch()
+      .then(user => {
+        if(user === null) {
+          let user = new User();
+          user.set('username', username);
+          user.set('password', password);
+          user.set('email', email);
+          user.save()
+          .then(result => {
+            resolve(result);
+          })
+          .catch(error => {
+            console.log('dbHelpers.js > setForm1Information error: ', error);
+            reject(error);
+          });
+        } else {
+          user.set('username', username);
+          user.set('password', password);
+          user.set('email', email);
+          user.save()
+          .then(result => {
+            resolve(result);
+          })
+          .catch(error => {
+            console.log('dbHelpers.js > setForm1Information error: ', error);
+            reject(error);
+          });        
+        }
       })
       .catch(error => {
-        console.log('dbHelpers.js > setForm1Information error: ', error);
+        console.log('dbHelpers.js > setForm2Information error: ', error);
         reject(error);
       });
-    });    
+    });   
   },
   setForm2Information: (form2) => {
     const { username, firstname, lastname, telephonenumber } = form2;
