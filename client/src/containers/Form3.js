@@ -22,7 +22,10 @@ class Form3 extends Component {
   }
 
   saveInformation() {
-    this.props.setForm3(this.form3);
+    this.props.setForm3({
+      username: this.props.form1.username, 
+      ...this.form3
+    });
   }
 
   render() {
@@ -81,6 +84,7 @@ class Form3 extends Component {
 
 const mapStateToProps = state => {
   return {
+    form1: state.form1,
     form3: state.form3
   };
 };

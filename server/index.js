@@ -11,9 +11,9 @@ app.use(express.static(__dirname + '/../dist'));
 
 app.post('/api/form1', handler.saveForm1Information);
 app.put('/api/form2', handler.saveForm2Information);
-//app.post('/api/form3', handler.saveForm3Information);
+app.put('/api/form3', handler.saveForm3Information);
 
-/* * Unhandled Endpoints * */
+/* * Unhandled Endpoints & Needed for React-Router * */
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../dist', 'index.html'));
 });

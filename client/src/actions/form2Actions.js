@@ -9,9 +9,9 @@ const setForm2 = form2 => {
         const { firstname, lastname, telephonenumber } = form2;
         if(result.status === 200) { 
           resolve({
-            firstname: firstname,
-            lastname: lastname,
-            telephonenumber: telephonenumber
+            firstname,
+            lastname,
+            telephonenumber
           });
         }
       })

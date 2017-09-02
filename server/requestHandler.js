@@ -16,6 +16,10 @@ module.exports = {
     .catch(error => res.status(404).send('User not found.'));    
   },
   saveForm3Information: (req, res) => {
-
+    db.setForm3Information(req.body)
+    .then(result => {
+      res.status(200).send();
+    })
+    .catch(error => res.status(404).send('User not found.'));    
   },
 };
