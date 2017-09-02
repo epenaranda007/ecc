@@ -1,7 +1,9 @@
 const db = require('../db/dbHelpers');
+const utilities = require('./utilities');
 
 module.exports = {
-  saveForm1Information: (req, res) => {
+  saveForm1Information: (req, res) => { 
+    req.body.password = utilities.encryptPassword(req.body.password);
     db.setForm1Information(req.body)
     .then(result => {
       res.status(201).send();
