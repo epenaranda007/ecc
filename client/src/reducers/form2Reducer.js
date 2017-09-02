@@ -1,12 +1,12 @@
 const initialState = {
-firstname: '',
+  firstname: '',
   lastname: '',
   telephonenumber: ''
 };
 
 const form2Reducer = (state = initialState, action) => {
   switch(action.type) {
-    case 'SET_FORM2':
+    case 'SET_FORM2_FULFILLED':
       state = {
         ...state,
         ...action.payload

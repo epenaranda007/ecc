@@ -5,7 +5,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Provider } from 'react-redux';
 import store from './store';
 import Home from './components/Home';
-import Finish from './components/Finish';
 import Form1 from './containers/Form1';
 import Form2 from './containers/Form2';
 import Form3 from './containers/Form3';
@@ -18,7 +17,6 @@ const App = () => (
           <Route path="/form1" component={ Form1 } />
           <Route path="/form2" component={ Form2 } />
           <Route path="/form3" component={ Form3 } />
-          <Route path="/finish" component={ Finish } />
           <Route path="/" component={ Home } />          
         </Switch>
       </Provider>

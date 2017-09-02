@@ -22,7 +22,10 @@ class Form2 extends Component {
   }
 
   saveInformation() {
-    this.props.setForm2(this.form2);
+    this.props.setForm2({
+      username: this.props.form1.username, 
+      ...this.form2
+    });
   }
 
   render() {
@@ -37,6 +40,7 @@ class Form2 extends Component {
           defaultValue={this.form2.firstname}
           onChange={this.handleInput}
         />
+        <br />
         <TextField
           hintText="Enter Lastname"
           floatingLabelText="Lastname"
@@ -45,6 +49,7 @@ class Form2 extends Component {
           defaultValue={this.form2.lastname}
           onChange={this.handleInput}
         />
+        <br />
         <TextField
           hintText="Enter Telephone Number"
           floatingLabelText="Telephone Number"
@@ -53,11 +58,12 @@ class Form2 extends Component {
           defaultValue={this.form2.telephonenumber}
           onChange={this.handleInput}
         />
+        <br />
         <Link to="/form1">
           <RaisedButton label="Back" secondary={true} />
         </Link>
         <Link to="/form3">
-          <RaisedButton label="SAVE" primary={true} onClick={this.saveInformation} />
+          <RaisedButton label="SAVE" primary={true} onClick={this.saveInformation}  />
         </Link>
       </div>
     );
@@ -66,6 +72,7 @@ class Form2 extends Component {
 
 const mapStateToProps = state => {
   return {
+    form1: state.form1,
     form2: state.form2
   };
 };

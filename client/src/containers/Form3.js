@@ -37,6 +37,7 @@ class Form3 extends Component {
           defaultValue={this.form3.streetaddress}
           onChange={this.handleInput}
         />
+        <br />
         <TextField
           hintText="Enter City"
           floatingLabelText="City"
@@ -46,6 +47,7 @@ class Form3 extends Component {
           defaultValue={this.form3.city}
           onChange={this.handleInput}
         />
+        <br />
         <TextField
           hintText="Enter State"
           floatingLabelText="State"
@@ -55,6 +57,7 @@ class Form3 extends Component {
           defaultValue={this.form3.state}
           onChange={this.handleInput}
         />
+        <br />
         <TextField
           hintText="Enter Zip"
           floatingLabelText="Zip"
@@ -64,10 +67,11 @@ class Form3 extends Component {
           defaultValue={this.form3.zip}
           onChange={this.handleInput}
         />
+        <br />
         <Link to="/form2">
           <RaisedButton label="Back" secondary={true} />
         </Link>
-        <Link to="/finish">
+        <Link to="/">
           <RaisedButton label="SAVE" primary={true} onClick={this.saveInformation} />
         </Link>
       </div>
@@ -90,4 +94,3 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form3);
-

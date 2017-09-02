@@ -7,7 +7,7 @@ const initialState = {
 
 const form3Reducer = (state = initialState, action) => {
   switch(action.type) {
-    case 'SET_FORM3':
+    case 'SET_FORM3_FULFILLED':
       state = {
         ...state,
         ...action.payload

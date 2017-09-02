@@ -27,6 +27,7 @@ class Form1 extends Component {
 
   render() {
     return (
+      
       <div className="form1-container-div">
         <TextField
           hintText="Enter Username"
@@ -37,6 +38,7 @@ class Form1 extends Component {
           defaultValue={this.form1.username}
           onChange={this.handleInput}
         />
+        <br />
         <TextField
           hintText="Enter Password"
           floatingLabelText="Password"
@@ -47,6 +49,7 @@ class Form1 extends Component {
           defaultValue={this.form1.password}
           onChange={this.handleInput}
         />
+        <br />
         <TextField
           hintText="Enter Email"
           floatingLabelText="Email"
@@ -56,6 +59,7 @@ class Form1 extends Component {
           defaultValue={this.form1.email}
           onChange={this.handleInput}
         />
+        <br />
         <Link to="/form2">
           <RaisedButton label="SAVE" primary={true} onClick={this.saveInformation} />
         </Link>
