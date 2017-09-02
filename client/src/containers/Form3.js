@@ -37,53 +37,63 @@ class Form3 extends Component {
 
   render() {
     return (
-      <div className="form3-container-div">
-        <TextField
-          hintText="Enter Street Address"
-          floatingLabelText="Street Address"
-          floatingLabelFixed={true}
-          errorText=""
-          name="streetaddress"
-          defaultValue={this.form3.streetaddress}
-          onChange={this.handleInput}
-        />
-        <br />
-        <TextField
-          hintText="Enter City"
-          floatingLabelText="City"
-          floatingLabelFixed={true}
-          errorText=""
-          name="city"
-          defaultValue={this.form3.city}
-          onChange={this.handleInput}
-        />
-        <br />
-        <TextField
-          hintText="Enter State"
-          floatingLabelText="State"
-          floatingLabelFixed={true}
-          errorText=""
-          name="state"
-          defaultValue={this.form3.state}
-          onChange={this.handleInput}
-        />
-        <br />
-        <TextField
-          hintText="Enter Zip"
-          floatingLabelText="Zip"
-          floatingLabelFixed={true}
-          errorText=""
-          name="zip"
-          defaultValue={this.form3.zip}
-          onChange={this.handleInput}
-        />
-        <br />
-        <Link to="/form2">
-          <RaisedButton label="Back" secondary={true} />
-        </Link>
-        <Link to="/">
-          <RaisedButton label="SAVE" primary={true} onClick={this.saveInformation} />
-        </Link>
+      <div className="form-container-div">
+        <div className="form-header-div">
+          <h1>EKA Solutions</h1>
+        </div>
+        <div className="form-fields-div">
+          <TextField
+            hintText="Enter Street Address"
+            floatingLabelText="Street Address"
+            floatingLabelFixed={true}
+            errorText=""
+            name="streetaddress"
+            defaultValue={this.form3.streetaddress}
+            onChange={this.handleInput}
+            style={style.field}
+          />
+          <br />
+          <TextField
+            hintText="Enter City"
+            floatingLabelText="City"
+            floatingLabelFixed={true}
+            errorText=""
+            name="city"
+            defaultValue={this.form3.city}
+            onChange={this.handleInput}
+            style={style.field}
+          />
+          <br />
+          <TextField
+            hintText="Enter State"
+            floatingLabelText="State"
+            floatingLabelFixed={true}
+            errorText=""
+            name="state"
+            defaultValue={this.form3.state}
+            onChange={this.handleInput}
+            style={style.field}
+          />
+          <br />
+          <TextField
+            hintText="Enter Zip"
+            floatingLabelText="Zip"
+            floatingLabelFixed={true}
+            errorText=""
+            name="zip"
+            defaultValue={this.form3.zip}
+            onChange={this.handleInput}
+            style={style.field}
+          />
+          <br />
+          <Link to="/form2" style={style.backbutton} >
+            <RaisedButton label="Back" secondary={true} />
+          </Link>
+          <Link to="/" style={style.savebutton} >
+            <RaisedButton label="SAVE" primary={true} onClick={this.saveInformation} />
+          </Link>
+          <br />
+        </div>
       </div>
     );
   }
@@ -114,3 +124,17 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form3);
+
+const style = {
+  field: {
+    width: '100%',
+  },
+  backbutton: {
+    float: 'left',
+    paddingTop: '10px'
+  },
+  savebutton: {
+    float: 'right',
+    paddingTop: '10px'
+  }
+};

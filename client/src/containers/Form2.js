@@ -30,41 +30,50 @@ class Form2 extends Component {
 
   render() {
     return (
-      <div className="form2-container-div">
-        <TextField
-          hintText="Enter Firstname"
-          floatingLabelText="Firstname"
-          floatingLabelFixed={true}
-          errorText=""
-          name="firstname"
-          defaultValue={this.form2.firstname}
-          onChange={this.handleInput}
-        />
-        <br />
-        <TextField
-          hintText="Enter Lastname"
-          floatingLabelText="Lastname"
-          floatingLabelFixed={true}
-          name="lastname"
-          defaultValue={this.form2.lastname}
-          onChange={this.handleInput}
-        />
-        <br />
-        <TextField
-          hintText="Enter Telephone Number"
-          floatingLabelText="Telephone Number"
-          floatingLabelFixed={true}
-          name="telephonenumber"
-          defaultValue={this.form2.telephonenumber}
-          onChange={this.handleInput}
-        />
-        <br />
-        <Link to="/form1">
-          <RaisedButton label="Back" secondary={true} />
-        </Link>
-        <Link to="/form3">
-          <RaisedButton label="SAVE" primary={true} onClick={this.saveInformation}  />
-        </Link>
+      <div className="form-container-div">
+        <div className="form-header-div">
+          <h1>EKA Solutions</h1>
+        </div>
+        <div className="form-fields-div">
+          <TextField
+            hintText="Enter Firstname"
+            floatingLabelText="Firstname"
+            floatingLabelFixed={true}
+            errorText=""
+            name="firstname"
+            defaultValue={this.form2.firstname}
+            onChange={this.handleInput}
+            style={style.field}
+          />
+          <br />
+          <TextField
+            hintText="Enter Lastname"
+            floatingLabelText="Lastname"
+            floatingLabelFixed={true}
+            name="lastname"
+            defaultValue={this.form2.lastname}
+            onChange={this.handleInput}
+            style={style.field}
+          />
+          <br />
+          <TextField
+            hintText="Enter Telephone Number"
+            floatingLabelText="Telephone Number"
+            floatingLabelFixed={true}
+            name="telephonenumber"
+            defaultValue={this.form2.telephonenumber}
+            onChange={this.handleInput}
+            style={style.field}
+          />
+          <br />
+          <Link to="/form1" style={style.backbutton} >
+            <RaisedButton label="Back" secondary={true} />
+          </Link>
+          <Link to="/form3" style={style.savebutton} >
+            <RaisedButton label="SAVE" primary={true} onClick={this.saveInformation}  />
+          </Link>
+          <br />
+        </div>
       </div>
     );
   }
@@ -86,3 +95,17 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form2);
+
+const style = {
+  field: {
+    width: '100%',
+  },
+  backbutton: {
+    float: 'left',
+    paddingTop: '10px'
+  },
+  savebutton: {
+    float: 'right',
+    paddingTop: '10px'
+  }
+};

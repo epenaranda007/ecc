@@ -28,41 +28,50 @@ class Form1 extends Component {
   render() {
     return (
       
-      <div className="form1-container-div">
-        <TextField
-          hintText="Enter Username"
-          floatingLabelText="Username"
-          floatingLabelFixed={true}
-          errorText=""
-          name="username"
-          defaultValue={this.form1.username}
-          onChange={this.handleInput}
-        />
-        <br />
-        <TextField
-          hintText="Enter Password"
-          floatingLabelText="Password"
-          floatingLabelFixed={true}
-          errorText=""
-          type="password"
-          name="password"
-          defaultValue={this.form1.password}
-          onChange={this.handleInput}
-        />
-        <br />
-        <TextField
-          hintText="Enter Email"
-          floatingLabelText="Email"
-          floatingLabelFixed={true}
-          errorText=""
-          name="email"
-          defaultValue={this.form1.email}
-          onChange={this.handleInput}
-        />
-        <br />
-        <Link to="/form2">
-          <RaisedButton label="SAVE" primary={true} onClick={this.saveInformation} />
-        </Link>
+      <div className="form-container-div">
+        <div className="form-header-div">
+          <h1>EKA Solutions</h1>
+        </div>
+        <div className="form-fields-div">
+          <TextField
+            hintText="Enter Username"
+            floatingLabelText="Username"
+            floatingLabelFixed={true}
+            errorText=""
+            name="username"
+            defaultValue={this.form1.username}
+            onChange={this.handleInput}
+            style={style.field}
+          />
+          <br />
+          <TextField
+            hintText="Enter Password"
+            floatingLabelText="Password"
+            floatingLabelFixed={true}
+            errorText=""
+            type="password"
+            name="password"
+            defaultValue={this.form1.password}
+            onChange={this.handleInput}
+            style={style.field}
+          />
+          <br />
+          <TextField
+            hintText="Enter Email"
+            floatingLabelText="Email"
+            floatingLabelFixed={true}
+            errorText=""
+            name="email"
+            defaultValue={this.form1.email}
+            onChange={this.handleInput}
+            style={style.field}
+          />      
+          <br />
+          <Link to="/form2" style={style.savebutton}>
+            <RaisedButton label="SAVE" primary={true} onClick={this.saveInformation} />
+          </Link>
+          <br />
+        </div>
       </div>
     );
   }
@@ -83,3 +92,14 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form1);
+
+const style = {
+  field: {
+    width: '100%',
+  },
+  savebutton: {
+    float: 'right',
+    paddingTop: '10px',
+
+  }
+};

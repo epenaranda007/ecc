@@ -8,6 +8,7 @@ const Home = () => (
       <div className="home-details-div">
         <h1>EKA SOLUTIONS</h1>
         <p>Start onboarding process by clicking Start button.</p>
+        <br />
         <Link to="/form1" >
           <RaisedButton label="Start" primary={true} />
         </Link>
