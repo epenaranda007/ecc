@@ -20,6 +20,18 @@ const setForm2 = form2 => {
   };
 };
 
+const resetForm2 = () => {
+  return {
+    type: 'RESET_FORM2',
+    payload: {
+      firstname: '',
+      lastname: '',
+      telephonenumber: ''
+    }
+  };
+};
+
 export {
-  setForm2
+  setForm2,
+  resetForm2
 };

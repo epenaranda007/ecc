@@ -15,6 +15,18 @@ const setForm1 = form1 => {
   };
 };
 
+const resetForm1 = () => {
+  return {
+    type: 'RESET_FORM1',
+    payload: {
+      username: '',
+      password: '',
+      email: ''
+    }
+  };
+};
+
 export {
-  setForm1
+  setForm1,
+  resetForm1
 };

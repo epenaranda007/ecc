@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setForm3 } from '../actions/form3Actions';
+import { resetForm1 } from '../actions/form1Actions';
+import { resetForm2 } from '../actions/form2Actions';
+import { resetForm3, setForm3 } from '../actions/form3Actions';
 import { Link } from 'react-router-dom';
 import { RaisedButton, TextField } from 'material-ui';
 
@@ -25,6 +27,11 @@ class Form3 extends Component {
     this.props.setForm3({
       username: this.props.form1.username, 
       ...this.form3
+    })
+    .then(() => {
+      this.props.resetForm1();
+      this.props.resetForm2();
+      this.props.resetForm3();
     });
   }
 
@@ -92,7 +99,16 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setForm3: form3 => {
-      dispatch(setForm3(form3));
+      return dispatch(setForm3(form3));
+    },
+    resetForm1: () => { 
+      dispatch(resetForm1());
+    },
+    resetForm2: () => { 
+      dispatch(resetForm2());
+    },
+    resetForm3: () => { 
+      dispatch(resetForm3());
     }
   };
 };

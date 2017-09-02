@@ -13,6 +13,12 @@ const form3Reducer = (state = initialState, action) => {
         ...action.payload
       };
       break;
+    case 'RESET_FORM3':
+      state = {
+        ...state,
+        ...action.payload
+      };
+      break;
   }
   return state;
 };

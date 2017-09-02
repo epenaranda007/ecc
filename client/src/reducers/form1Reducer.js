@@ -12,6 +12,12 @@ const form1Reducer = (state = initialState, action) => {
         ...action.payload
       };
       break;
+    case 'RESET_FORM1':
+      state = {
+        ...state,
+        ...action.payload
+      };
+      break;
   }
   return state;
 };

@@ -21,6 +21,19 @@ const setForm3 = form3 => {
   };
 };
 
+const resetForm3 = () => {
+  return {
+    type: 'RESET_FORM3',
+    payload: {
+      streetaddress: '',
+      city: '',
+      state: '',
+      zip: ''
+    }
+  };
+};
+
 export {
-  setForm3
+  setForm3,
+  resetForm3
 };
