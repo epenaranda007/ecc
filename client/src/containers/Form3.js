@@ -107,6 +107,7 @@ class Form3 extends Component {
             <RaisedButton label="Back" secondary={true} />
           </Link>
           <RaisedButton label="SAVE" primary={true} 
+            disabled={this.buttonDisabled}
             onClick={this.saveInformation} 
             style={style.savebutton} 
           />

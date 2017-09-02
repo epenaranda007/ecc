@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { setForm1 } from '../actions/form1Actions';
 import { Link } from 'react-router-dom';
 import { RaisedButton, TextField } from 'material-ui';
+import * as EmailValidator from 'email-validator';
 
 class Form1 extends Component {
   
@@ -31,7 +32,7 @@ class Form1 extends Component {
 
   validateInformation() {
     const { username, password, email } = this.form1;
-    if(username === '' || password === '' || email === '') {
+    if(username === '' || password === '' || email === '' || !EmailValidator.validate(email)) {
       return false;
     }
     return true;
@@ -76,7 +77,7 @@ class Form1 extends Component {
           />
           <br />
           <TextField
-            hintText="Enter Email"
+            hintText="Enter Valid Email"
             floatingLabelText="Email"
             floatingLabelFixed={true}
             name="email"
